@@ -9,6 +9,7 @@
           </q-avatar>
           Italo
         </q-toolbar-title>
+        <q-btn flat round dense icon="logout" @click="logout"/>
       </q-toolbar>
 
       <q-tabs align="left">
@@ -27,14 +28,17 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { mapActions } from 'vuex';
 
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-  },
-
-  setup() {
+  methods: {
+    ...mapActions({ logout: 'global/logout' }),
+    onLogout() {
+      alert('logout');
+      this.logout();
+    },
   },
 });
 </script>

@@ -27,3 +27,8 @@ export const updateSession = (state, session) => {
   state.session = session;
   SESSION_SERVICE.saveSession(session);
 };
+
+export const removeSession = (state) => {
+  state.session = undefined;
+  SESSION_SERVICE.removeSession();
+};

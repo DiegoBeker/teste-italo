@@ -5,8 +5,7 @@ export function login({ state, commit }, credentials) {
 
   if (userExists && userExists.senha.toString() === credentials.password) {
     const token = uuid();
-    const session = { ...userExists, token };
-    delete session.password;
+    const session = { nome: userExists.nome, token };
 
     commit('updateSession', session);
 
@@ -14,4 +13,9 @@ export function login({ state, commit }, credentials) {
   } else {
     alert('login ou senha errado');
   }
+}
+
+export function logout({ commit }) {
+  commit('removeSession');
+  this.$router.push('/');
 }
