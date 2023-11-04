@@ -33,6 +33,8 @@
 <script>
 import { defineComponent } from 'vue';
 import { mapActions } from 'vuex';
+import { SESSION_SERVICE } from 'src/services/session';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'IndexPage',
@@ -42,6 +44,12 @@ export default defineComponent({
     onSubmit() {
       this.login(this.user);
     },
+  },
+  setup() {
+    const session = SESSION_SERVICE.getSession();
+    const router = useRouter();
+    console.log(session);
+    if (session) router.push('/home');
   },
 });
 </script>

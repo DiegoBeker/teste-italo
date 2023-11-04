@@ -1,3 +1,5 @@
+import { SESSION_SERVICE } from 'src/services/session';
+
 export const initUsers = (state) => {
   const storedData = localStorage.getItem('users');
   if (!storedData) {
@@ -19,4 +21,9 @@ export const initUsers = (state) => {
 };
 export const updateUsers = (state, data) => {
   state.users = data;
+};
+
+export const updateSession = (state, session) => {
+  state.session = session;
+  SESSION_SERVICE.saveSession(session);
 };

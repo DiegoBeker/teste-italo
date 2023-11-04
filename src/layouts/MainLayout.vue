@@ -13,8 +13,8 @@
 
       <q-tabs align="left">
         <q-route-tab to="/home" label="Home" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <q-route-tab to="/admin" label="Admin" />
+        <q-route-tab to="/about" label="About" />
       </q-tabs>
     </q-header>
 
