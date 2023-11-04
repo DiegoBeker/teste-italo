@@ -11,27 +11,8 @@ export default defineComponent({
   setup() {
     const $store = useStore();
 
-    function getData() {
-      const storedData = localStorage.getItem('users');
-      if (!storedData) {
-        const data = [
-          {
-            nome: 'admin',
-            login: 'admin',
-            senha: 123123,
-            grupo: 'administrador',
-          },
-        ];
-        const serializedData = JSON.stringify(data);
-        localStorage.setItem('users', serializedData);
-        $store.commit('global/updateUsers', data);
-      } else {
-        const unserializedData = JSON.parse(storedData);
-        $store.commit('global/updateUsers', unserializedData);
-      }
-    }
     onMounted(() => {
-      getData();
+      $store.commit('global/initUsers');
       console.log($store.state.global.users);
     });
   },
