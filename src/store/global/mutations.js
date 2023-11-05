@@ -27,7 +27,6 @@ export const updateUsers = (state, data) => {
 export const createUser = (state, data) => {
   USER_SERVICE.saveUser(data);
   initUsers(state);
-  console.log(state.users);
 };
 
 export const updateSession = (state, session) => {

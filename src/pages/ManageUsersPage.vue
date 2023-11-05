@@ -252,11 +252,8 @@ export default defineComponent({
     },
     submit() {
       const self = this;
-      console.log(self.addFlag);
-      console.log(self.user);
       if (self.addFlag) {
         self.createUser(self.user);
-        alert('Usuario criado');
       }
     },
   },
