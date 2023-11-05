@@ -2,6 +2,10 @@
 
 Desafio técnico Vue.js + Quasar da Italo
 
+## Deploy
+
+Available on [Vercel](https://teste-italo.vercel.app/#/)
+
 ## Install the dependencies
 ```bash
 yarn
