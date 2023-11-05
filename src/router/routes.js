@@ -13,7 +13,6 @@ const routes = [
     children: [
       { path: '/home', component: () => import('pages/HomePage.vue') },
       { path: '/admin', component: () => import('pages/ManageUsersPage.vue') },
-      { path: '/about', component: () => import('pages/AboutPage.vue') },
     ],
   },
 
