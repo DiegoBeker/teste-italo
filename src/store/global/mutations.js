@@ -29,6 +29,11 @@ export const createUser = (state, data) => {
   initUsers(state);
 };
 
+export const updateUser = (state, payload) => {
+  USER_SERVICE.updateUser(payload);
+  initUsers(state);
+};
+
 export const deleteUser = (state, data) => {
   USER_SERVICE.deleteUser(data);
   initUsers(state);

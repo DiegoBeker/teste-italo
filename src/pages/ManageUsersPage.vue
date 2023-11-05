@@ -185,6 +185,7 @@ export default defineComponent({
       viewToggle: ref(false),
       filter: ref(''),
       user: ref({}),
+      userToEdit: ref({}),
       addEditUser: ref(false),
       addFlag: ref(true),
       viewUser: ref(false),
@@ -232,7 +233,11 @@ export default defineComponent({
   },
 
   methods: {
-    ...mapActions({ createUser: 'global/createUser', delete: 'global/deleteUser' }),
+    ...mapActions({
+      createUser: 'global/createUser',
+      delete: 'global/deleteUser',
+      updateUser: 'global/updateUser',
+    }),
     openModal(val) {
       const self = this;
       self.selectedUser = val;
@@ -247,6 +252,7 @@ export default defineComponent({
     editRow(val) {
       const self = this;
       self.user = JSON.parse(JSON.stringify(val));
+      self.userToEdit = JSON.parse(JSON.stringify(val));
       self.addFlag = false;
       self.addEditUser = true;
     },
@@ -254,6 +260,10 @@ export default defineComponent({
       const self = this;
       if (self.addFlag) {
         self.createUser(self.user);
+      } else {
+        const { userToEdit, user } = self;
+        const payload = { userToEdit, user };
+        self.updateUser(payload);
       }
     },
     deleteUser(val) {

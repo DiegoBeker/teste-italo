@@ -25,6 +25,10 @@ export function createUser({ commit }, user) {
   commit('createUser', user);
 }
 
+export function updateUser({ commit }, payload) {
+  commit('updateUser', payload);
+}
+
 export function deleteUser({ commit }, user) {
   commit('deleteUser', user);
 }

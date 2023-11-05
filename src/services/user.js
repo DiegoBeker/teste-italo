@@ -13,19 +13,37 @@ const USER_SERVICE = {
     localStorage.setItem(USER_KEY, JSON.stringify(users));
   },
   deleteUser: (user) => {
+    if (user.login === 'admin') {
+      alert('Não é possível excluir o usuario administrador');
+      return;
+    }
+
     const users = JSON.parse(localStorage.getItem(USER_KEY));
-    console.log(users);
+
     const loginExists = users.find((u) => u.login === user.login);
-    console.log(loginExists);
+
     if (loginExists) {
       const updatedUsers = users.filter((u) => u.login !== user.login);
-      console.log(updatedUsers);
       localStorage.setItem(USER_KEY, JSON.stringify(updatedUsers));
     } else {
       localStorage.setItem(USER_KEY, JSON.stringify(users));
     }
   },
   getUser: () => JSON.parse(localStorage.getItem(USER_KEY)),
+  updateUser: (payload) => {
+    const { user, userToEdit } = payload;
+    const users = JSON.parse(localStorage.getItem(USER_KEY));
+
+    const userExists = users.find((u) => u.login === userToEdit.login);
+
+    if (userExists) {
+      userExists.nome = user.nome;
+      userExists.login = user.login;
+      userExists.password = user.password;
+      userExists.grupo = user.grupo;
+      localStorage.setItem(USER_KEY, JSON.stringify(users));
+    }
+  },
 };
 
 export { USER_SERVICE };
