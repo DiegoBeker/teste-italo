@@ -35,6 +35,12 @@ const USER_SERVICE = {
     const users = JSON.parse(localStorage.getItem(USER_KEY));
 
     const userExists = users.find((u) => u.login === userToEdit.login);
+    const newLoginExists = users.find((u) => u.login === user.login);
+
+    if (newLoginExists && (newLoginExists.login !== userExists.login)) {
+      alert('Este Login não está disponível');
+      return;
+    }
 
     if (userExists) {
       userExists.nome = user.nome;

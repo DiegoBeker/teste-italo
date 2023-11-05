@@ -13,7 +13,6 @@ export default defineComponent({
 
     onMounted(() => {
       $store.commit('global/initUsers');
-      console.log($store.state.global.users);
     });
   },
 });

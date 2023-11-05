@@ -14,8 +14,7 @@
 
       <q-tabs align="left">
         <q-route-tab to="/home" label="Home" />
-        <q-route-tab to="/admin" label="Admin" />
-        <q-route-tab to="/about" label="About" />
+        <q-route-tab to="/admin" label="Gerenciar" />
       </q-tabs>
     </q-header>
 
@@ -36,7 +35,6 @@ export default defineComponent({
   methods: {
     ...mapActions({ logout: 'global/logout' }),
     onLogout() {
-      alert('logout');
       this.logout();
     },
   },

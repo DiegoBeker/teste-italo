@@ -48,7 +48,7 @@ export default defineComponent({
   setup() {
     const session = SESSION_SERVICE.getSession();
     const router = useRouter();
-    console.log(session);
+
     if (session) router.push('/home');
   },
 });

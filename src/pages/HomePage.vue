@@ -1,5 +1,5 @@
 <template>
-    <h1>Olá, Usuário</h1>
+    <div class="q-ma-lg text-h2">Bem vindo, {{ session.nome }}!</div>
 </template>
 
 <script>
@@ -12,8 +12,11 @@ export default defineComponent({
   setup() {
     const session = SESSION_SERVICE.getSession();
     const router = useRouter();
-    console.log(session);
+
     if (!session) router.push('/');
+
+    return { session };
   },
+
 });
 </script>

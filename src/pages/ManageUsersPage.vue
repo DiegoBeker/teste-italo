@@ -3,7 +3,7 @@
   <q-page class="q-pa-md">
     <q-card>
       <q-table
-        title="Manage Users"
+        title="Gerenciar"
         :rows="data"
         :hide-header="mode === 'grid'"
         :columns="columns"
@@ -12,7 +12,7 @@
         :filter="filter"
         v-model:pagination="pagination"
       >
-        <template v-slot:top-right="props">
+        <template v-slot:top-right>
           <q-btn
             @click="addUser()"
             flat
@@ -34,18 +34,6 @@
               <q-icon class="q-pr-sm" color="grey-8" name="search" />
             </template>
           </q-input>
-
-          <q-toggle
-            v-model="viewToggle"
-            @click="
-              mode = mode === 'grid' ? 'list' : 'grid';
-              separator = mode === 'grid' ? 'none' : 'horizontal';"
-            v-if="!props.inFullscreen"
-          >
-            <q-tooltip :disable="$q.platform.is.mobile" v-close-popup
-              >{{ mode === "grid" ? "List View" : "Grid View" }}
-            </q-tooltip>
-          </q-toggle>
 
         </template>
 
@@ -120,6 +108,7 @@
                   <q-input
                     dense
                     outlined
+                    type="password"
                     v-model="user.senha"
                   />
                 </q-item-section>
@@ -269,11 +258,12 @@ export default defineComponent({
     deleteUser(val) {
       const self = this;
 
-      // eslint-disable-next-line no-restricted-globals
+      // eslint-disable-next-line no-restricted-globals, no-alert
       if (confirm('Deseja realmente excluir este item?')) {
         self.delete(val);
       } else {
-        console.log(val);
+        // eslint-disable-next-line no-console
+        console.log('Cancelado');
       }
     },
   },
