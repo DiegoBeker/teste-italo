@@ -19,3 +19,7 @@ export function logout({ commit }) {
   commit('removeSession');
   this.$router.push('/');
 }
+
+export function createUser({ commit }, user) {
+  commit('createUser', user);
+}

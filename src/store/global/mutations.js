@@ -1,4 +1,5 @@
 import { SESSION_SERVICE } from 'src/services/session';
+import { USER_SERVICE } from 'src/services/user';
 
 export const initUsers = (state) => {
   const storedData = localStorage.getItem('users');
@@ -21,6 +22,12 @@ export const initUsers = (state) => {
 };
 export const updateUsers = (state, data) => {
   state.users = data;
+};
+
+export const createUser = (state, data) => {
+  USER_SERVICE.saveUser(data);
+  initUsers(state);
+  console.log(state.users);
 };
 
 export const updateSession = (state, session) => {

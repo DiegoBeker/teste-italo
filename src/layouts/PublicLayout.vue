@@ -12,7 +12,7 @@
         </q-toolbar>
       </q-header>
 
-      <q-page-container>
+      <q-page-container class="flex justify-center">
         <router-view />
       </q-page-container>
 
