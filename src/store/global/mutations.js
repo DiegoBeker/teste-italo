@@ -29,6 +29,11 @@ export const createUser = (state, data) => {
   initUsers(state);
 };
 
+export const deleteUser = (state, data) => {
+  USER_SERVICE.deleteUser(data);
+  initUsers(state);
+};
+
 export const updateSession = (state, session) => {
   state.session = session;
   SESSION_SERVICE.saveSession(session);

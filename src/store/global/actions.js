@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { v4 as uuid } from 'uuid';
 
 export function login({ state, commit }, credentials) {
@@ -22,4 +23,8 @@ export function logout({ commit }) {
 
 export function createUser({ commit }, user) {
   commit('createUser', user);
+}
+
+export function deleteUser({ commit }, user) {
+  commit('deleteUser', user);
 }

@@ -68,7 +68,7 @@
             <div class="q-gutter-sm">
               <q-btn dense outline size="sm" color="primary" icon="edit" @click="editRow(props.row)" />
               <q-btn dense outline size="sm" color="primary" icon="visibility" @click="openModal(props.row)" />
-              <q-btn dense outline size="sm" color="red" icon="delete" />
+              <q-btn dense outline size="sm" color="red" icon="delete" @click="deleteUser(props.row)"/>
             </div>
           </q-td>
         </template>
@@ -178,7 +178,7 @@ export default defineComponent({
   setup() {
     const session = SESSION_SERVICE.getSession();
     const router = useRouter();
-    console.log(session);
+
     if (!session) router.push('/');
 
     return {
@@ -232,7 +232,7 @@ export default defineComponent({
   },
 
   methods: {
-    ...mapActions({ createUser: 'global/createUser' }),
+    ...mapActions({ createUser: 'global/createUser', delete: 'global/deleteUser' }),
     openModal(val) {
       const self = this;
       self.selectedUser = val;
@@ -254,6 +254,16 @@ export default defineComponent({
       const self = this;
       if (self.addFlag) {
         self.createUser(self.user);
+      }
+    },
+    deleteUser(val) {
+      const self = this;
+
+      // eslint-disable-next-line no-restricted-globals
+      if (confirm('Deseja realmente excluir este item?')) {
+        self.delete(val);
+      } else {
+        console.log(val);
       }
     },
   },
