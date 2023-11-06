@@ -1,5 +1,6 @@
 <template>
-  <div class="q-pa-md col self-center" style="max-width: 400px">
+  <div class="q-pa-xl col self-center" style="max-width: 400px">
+
     <q-form
       @submit.prevent="onSubmit"
       class="q-gutter-md"
